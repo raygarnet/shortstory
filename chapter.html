@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>チャプターページ</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'Yu Gothic', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: radial-gradient(ellipse at center, #1a1a1a 0%, #000000 100%);
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(20, 20, 20, 0.85);
+      border: 1px solid #333;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+      width: 80%;
+      max-width: 800px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5em;
+      color: #ff4444;
+      text-shadow: 1px 1px 5px #000;
+    }
+    p {
+      margin-bottom: 1.5em;
+      font-size: 1.2rem;
+    }
+    #chapter-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    #navigation {
+      margin-top: 2rem;
+    }
+    button {
+      background-color: #333;
+      color: #f0f0f0;
+      border: 1px solid #444;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>チャプター01：ビューポイント</h1>
+    <div id="chapter-content">ここに物語の内容が表示されます。</div>
+    <div id="navigation">
+      <button id="prev-page">前のページ</button>
+      <button id="next-page">次のページ</button>
+    </div>
+  </div>
+
+  <script>
+    const chapterContents = {
+      1: [
+        "ページ1の内容… 目覚めの森の深い闇の中で、あなたは目を覚ます。",
+        "ページ2の内容… 隣には奇妙な音が聞こえ、振り向くと何も見えない。",
+        "ページ3の内容… 森の中で不思議な人物と出会い、物語は進んでいく…"
+      ],
+      2: [
+        "ページ1の内容… 鏡の中で見知らぬ自分が微笑んでいる。",
+        "ページ2の内容… その鏡を触れると、まるで別の世界に引き込まれるかのよう…",
+        "ページ3の内容… そこには恐ろしい存在が待ち受けていた。"
+      ],
+      3: [
+        "ページ1の内容… 蠢く家の中で、ひとり足音が聞こえた。",
+        "ページ2の内容… 目の前には不気味な人影が動き出す。",
+        "ページ3の内容… その家の秘密が少しずつ明らかになり始める。"
+      ]
+    };
+
+    const chapterId = 1; // URLからチャプターIDを取得（例えば、`chapter.html?chapter=1`から取得）
+    let currentPage = 0; // 現在のページ番号（0ベース）
+
+    function updateChapterContent() {
+      const content = chapterContents[chapterId][currentPage];
+      document.getElementById('chapter-content').textContent = content;
+    }
+
+    document.getElementById('next-page').addEventListener('click', () => {
+      if (currentPage < chapterContents[chapterId].length - 1) {
+        currentPage++;
+        updateChapterContent();
+      }
+    });
+
+    document.getElementById('prev-page').addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updateChapterContent();
+      }
+    });
+
+    // 初期表示
+    updateChapterContent();
+  </script>
+</body>
+</html>
