@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ビューポイント</title>
+  <title>チャプターページ</title>
   <style>
     body {
       margin: 0;
@@ -32,10 +32,6 @@
       margin-bottom: 0.5em;
       color: #ff4444;
       text-shadow: 1px 1px 5px #000;
-    }
-    p {
-      margin-bottom: 1.5em;
-      font-size: 1.2rem;
     }
     #chapter-content {
       font-size: 1.1rem;
@@ -66,6 +62,7 @@
     <div id="navigation">
       <button id="prev-page">前のページ</button>
       <button id="next-page">次のページ</button>
+      <button id="back-to-top">トップページへ戻る</button>
     </div>
   </div>
 
@@ -78,8 +75,8 @@
       ]
     };
 
-    const chapterId = 1; // 固定チャプターID（1はチャプター1）
-    let currentPage = 0; // 現在のページ番号（0ベース）
+    const chapterId = 1;
+    let currentPage = 0;
 
     function updateChapterContent() {
       const content = chapterContents[chapterId][currentPage];
@@ -100,8 +97,13 @@
       }
     });
 
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      window.location.href = 'index.html'; // トップページのURLに変更
+    });
+
     // 初期表示
     updateChapterContent();
   </script>
 </body>
 </html>
+
